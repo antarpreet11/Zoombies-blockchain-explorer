@@ -3,16 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Mainnet, DAppProvider, useEtherBalance, Config, Goerli, ChainId} from '@usedapp/core';
+import { Mainnet, DAppProvider, useEtherBalance, Config, Goerli, ChainId, MoonbaseAlpha, Moonriver} from '@usedapp/core';
 import { getDefaultProvider } from 'ethers';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const config: Config = {
-  readOnlyChainId: Mainnet.chainId,
+  readOnlyChainId: MoonbaseAlpha.chainId,
   readOnlyUrls: {
-    [Mainnet.chainId]: 'https://eth-mainnet.g.alchemy.com/v2/J038e3gaccJC6Ue0BrvmpjzxsdfGly9n'
+    [Mainnet.chainId]: 'https://eth-mainnet.g.alchemy.com/v2/J038e3gaccJC6Ue0BrvmpjzxsdfGly9n',
+    [MoonbaseAlpha.chainId]: 'https://rpc.api.moonbase.moonbeam.network/',
+    [Moonriver.chainId]: 'https://rpc.moonriver.moonbeam.network'
   },
+  refresh: 'never',
 }
 
 root.render(
