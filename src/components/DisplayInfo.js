@@ -1,10 +1,17 @@
 import React from 'react'
-import { useEtherBalance } from '@usedapp/core';
+import { useEtherBalance , useBlockMeta , useToken} from '@usedapp/core';
 
 const DisplayInfo = (props) => {
-    const balance = useEtherBalance('0xFf369caa6296F24511800B78aEF73fA6Cd47A7F3');
+    const balance = useEtherBalance(props.acc);
+    const info = useBlockMeta();
+    // const tokeninfo = useToken(props.acc);
     return (
-        <div>Currect Balance: {balance !== undefined ? balance.toString() : "undefined"}</div>
+        <div>
+            <div>Chain ID: {props.chID !== undefined ? props.chID.toString() : "undefined"}</div>
+            <div>Currect Balance: {balance !== undefined ? balance.toString() : "undefined"} wei</div>
+            <div>Current Block Number: {info.blockNumber !== undefined ? info.blockNumber.toString() : "undefined"}</div>
+            <div>Last Time Stamp: {info.timestamp !== undefined ? info.timestamp.toString() : "undefined"}</div>
+        </div>
     )
 }
 

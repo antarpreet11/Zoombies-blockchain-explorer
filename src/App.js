@@ -4,7 +4,7 @@ import { useEthers } from '@usedapp/core';
 import DisplayInfo from './components/DisplayInfo';
 
 function App() {
-  const { activateBrowserWallet, account } = useEthers();
+  const { activateBrowserWallet, account , chainId} = useEthers();
   const isConnected = account !== undefined;
   console.log("App called");
   return (
@@ -13,7 +13,7 @@ function App() {
           <div>
             <button>Connected!</button>
             {account && <p>Account: {account}</p>}
-            <DisplayInfo acc={account}></DisplayInfo>
+            <DisplayInfo acc={account} chID={chainId}></DisplayInfo>
           </div> :
           <div>
             <button onClick={() => activateBrowserWallet()}>Connect</button>

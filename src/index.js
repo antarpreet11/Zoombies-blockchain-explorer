@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Mainnet, DAppProvider, useEtherBalance, Config, Goerli, ChainId, MoonbaseAlpha, Moonriver} from '@usedapp/core';
+import { Mainnet, DAppProvider, Config, MoonbaseAlpha, Moonriver} from '@usedapp/core';
 import { getDefaultProvider } from 'ethers';
 
 
@@ -15,7 +15,7 @@ const config: Config = {
     [MoonbaseAlpha.chainId]: 'https://rpc.api.moonbase.moonbeam.network/',
     [Moonriver.chainId]: 'https://rpc.moonriver.moonbeam.network'
   },
-  refresh: 'never',
+  refresh: 'never'
 }
 
 root.render(
