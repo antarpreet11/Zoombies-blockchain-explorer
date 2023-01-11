@@ -1,5 +1,5 @@
 import React from 'react'
-import { useToken } from '@usedapp/core';
+import { useToken, useLogs } from '@usedapp/core';
 import { formatEther } from '@ethersproject/units'
 
 
@@ -19,6 +19,14 @@ const ContractsInfo = (props) => {
         currzoom = moonzoom;
         currzoombies = moonzoombies;
     }
+
+    const zoomLogs = useLogs({
+        contract: currzoom,
+        event: 'Transfer',
+        args: [],
+    }, {});
+    console.log(zoomLogs);
+
     const zoom = useToken(currzoom);
     // const zoombies = useToken(currzoombies);
     // console.log(`Zoombies is ${zoombies}`);

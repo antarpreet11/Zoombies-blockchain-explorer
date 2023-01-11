@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEthers } from '@usedapp/core';
 import DisplayInfo from './components/DisplayInfo';
 import ContractsInfo from './components/ContractsInfo';
+import ContractsInfoEthers from './components/ContractsInfoEthers';
 
 function App() {
   const { activateBrowserWallet, account , chainId, deactivate} = useEthers();
@@ -19,6 +20,9 @@ function App() {
             <div class="mt-3">
               <ContractsInfo acc={account} chID={chainId}></ContractsInfo>
             </div>
+            {/* <div class="mt-3">
+              <ContractsInfoEthers acc={account} chID={chainId}></ContractsInfoEthers>
+            </div> */}
           </div> :
           <div class="justify-content-center">
             <button onClick={() => activateBrowserWallet()} type="button" class="btn btn-warning btn-lg">Connect</button>
