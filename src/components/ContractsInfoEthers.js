@@ -6,6 +6,7 @@ import { formatEther } from '@ethersproject/units'
 import { useState } from 'react';
 
 const ContractsInfoEthers = (props) => {
+    const [sup, setSup] = useState('');
     let provider = '';
 
     const movrzoom = '0x8bd5180Ccdd7AE4aF832c8C03e21Ce8484A128d4'; 
@@ -29,16 +30,15 @@ const ContractsInfoEthers = (props) => {
     let totalSupply = undefined;
 
     const contract = new ethers.Contract(currzoom, ZoomAbi.abi, provider);
-    console.log(contract);
 
     async function getTotalSupply() {
         totalSupply = await contract.totalSupply();
-        // console.log(formatEther(totalSupply));
+        setSup(formatEther(totalSupply));
     }
     getTotalSupply();
-    console.log(totalSupply);
+    
     return (
-        <div>Zoom Ethers Total Supply: {totalSupply}</div>
+        <div>Zoom Ethers Total Supply: {sup}</div>
     )
 }
 

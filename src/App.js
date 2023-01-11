@@ -20,9 +20,9 @@ function App() {
             <div class="mt-3">
               <ContractsInfo acc={account} chID={chainId}></ContractsInfo>
             </div>
-            {/* <div class="mt-3">
+            <div class="mt-3">
               <ContractsInfoEthers acc={account} chID={chainId}></ContractsInfoEthers>
-            </div> */}
+            </div>
           </div> :
           <div class="justify-content-center">
             <button onClick={() => activateBrowserWallet()} type="button" class="btn btn-warning btn-lg">Connect</button>
