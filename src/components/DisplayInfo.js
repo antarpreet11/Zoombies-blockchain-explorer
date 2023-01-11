@@ -1,11 +1,11 @@
 import React from 'react'
-import { useEtherBalance , useBlockMeta , useToken} from '@usedapp/core';
+import { useEtherBalance , useBlockMeta } from '@usedapp/core';
 import { formatEther } from '@ethersproject/units'
 
 const DisplayInfo = (props) => {
     const balance = useEtherBalance(props.acc);
     const info = useBlockMeta();
-    // const tokeninfo = useToken(props.acc);
+    
     return (
         <div>
             <div>Chain ID: {props.chID !== undefined ? props.chID : "undefined"}</div>

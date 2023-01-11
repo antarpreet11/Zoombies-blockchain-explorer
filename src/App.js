@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import { useEthers } from '@usedapp/core';
 import DisplayInfo from './components/DisplayInfo';
+import ContractsInfo from './components/ContractsInfo';
 
 function App() {
   const { activateBrowserWallet, account , chainId, deactivate} = useEthers();
@@ -15,6 +16,9 @@ function App() {
             <button onClick={deactivate} type="button" class="btn btn-success btn-lg mb-2">Connected!</button>
             {account && <p>Account: {account}</p>}
             <DisplayInfo acc={account} chID={chainId}></DisplayInfo>
+            <div class="mt-3">
+              <ContractsInfo acc={account} chID={chainId}></ContractsInfo>
+            </div>
           </div> :
           <div class="justify-content-center">
             <button onClick={() => activateBrowserWallet()} type="button" class="btn btn-warning btn-lg">Connect</button>
