@@ -22,6 +22,7 @@ const TransList = (props) => {
             const newarr = [t1, ...prev];
             return newarr.filter((v,i,a)=>a.findIndex(v2=>(v2.id===v.id))===i);
         })
+        console.log(ztransactions);
         props.zsupply();
         props.zbsupply();
     });
@@ -44,7 +45,11 @@ const TransList = (props) => {
     });
         
     return (
-        <DispTransList zlist={ztransactions} zblist={zbtransactions}></DispTransList>
+        <div>
+            <ul>
+                {ztransactions.map((item) => <li key={item.key}>{item.id}</li>)}
+            </ul>
+        </div>
     )
 }
 
