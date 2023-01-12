@@ -23,8 +23,11 @@ const ContractsInfo = (props) => {
     // const zoomLogs = useLogs({
     //     contract: currzoom,
     //     event: 'Transfer',
-    //     args: [],
-    // }, {});
+    //     args: [null],
+    // }, {
+    //     chainId: props.chID,
+    //     refresh: "everyBlock",
+    // });
     // console.log(zoomLogs);
 
     const zoom = useToken(currzoom);

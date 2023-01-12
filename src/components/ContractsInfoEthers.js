@@ -1,4 +1,4 @@
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import React from 'react'
 import ZoomAbi from '../abis/ZoomToken.json'
 import ZoombiesAbi from '../abis/Zoombies.json'
@@ -6,7 +6,9 @@ import { formatEther } from '@ethersproject/units'
 import { useState } from 'react';
 
 const ContractsInfoEthers = (props) => {
-    const [sup, setSup] = useState('');
+    const [zsup, setZsup] = useState('');
+    const [zbsup, setZbsup] = useState('');
+    
     let provider = '';
 
     const movrzoom = '0x8bd5180Ccdd7AE4aF832c8C03e21Ce8484A128d4'; 
@@ -27,18 +29,29 @@ const ContractsInfoEthers = (props) => {
         provider = new ethers.providers.JsonRpcProvider('https://rpc.api.moonbase.moonbeam.network/');
     }
 
-    let totalSupply = undefined;
+    let ztotalSupply = undefined;
+    let zbtotalSupply = undefined;
 
-    const contract = new ethers.Contract(currzoom, ZoomAbi.abi, provider);
+    const contractzoom = new ethers.Contract(currzoom, ZoomAbi.abi, provider);
+    const contractzoombies = new ethers.Contract(currzoombies, ZoombiesAbi.abi, provider);
 
     async function getTotalSupply() {
-        totalSupply = await contract.totalSupply();
-        setSup(formatEther(totalSupply));
+        ztotalSupply = await contractzoom.totalSupply();
+        zbtotalSupply = await contractzoombies.totalSupply();
+        setZsup(formatEther(ztotalSupply));
+        setZbsup(zbtotalSupply.toString());
     }
     getTotalSupply();
-    
+
+    contractzoom.once("Transfer", (to, amount, from) => {
+        console.log(to, amount, from);
+    });
+
     return (
-        <div>Zoom Ethers Total Supply: {sup}</div>
+        <div>
+            <div>Zoom Ethers Total Supply: {zsup}</div>
+            <div>Zoombies Ethers Total Supply: {zbsup}</div>
+        </div>
     )
 }
 
