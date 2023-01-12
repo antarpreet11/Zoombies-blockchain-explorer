@@ -1,11 +1,13 @@
-import { ethers, utils } from 'ethers'
+import { ethers } from 'ethers'
 import React from 'react'
 import ZoomAbi from '../abis/ZoomToken.json'
 import ZoombiesAbi from '../abis/Zoombies.json'
 import { formatEther } from '@ethersproject/units'
 import { useState } from 'react';
+import TransList from './TransList.js'
 
 const ContractsInfoEthers = (props) => {
+
     const [zsup, setZsup] = useState('');
     const [zbsup, setZbsup] = useState('');
     
@@ -21,12 +23,12 @@ const ContractsInfoEthers = (props) => {
     if(props.chID == '1285') {
         currzoom = movrzoom;
         currzoombies = movrzoombies;
-        provider = new ethers.providers.JsonRpcProvider('https://rpc.moonriver.moonbeam.network');
+        provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonriver.moonbeam.network/');
     }
     else if(props.chID == '1287') {
         currzoom = moonzoom;
         currzoombies = moonzoombies;
-        provider = new ethers.providers.JsonRpcProvider('https://rpc.api.moonbase.moonbeam.network/');
+        provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonbase.moonbeam.network/');
     }
 
     let ztotalSupply = undefined;
@@ -35,22 +37,23 @@ const ContractsInfoEthers = (props) => {
     const contractzoom = new ethers.Contract(currzoom, ZoomAbi.abi, provider);
     const contractzoombies = new ethers.Contract(currzoombies, ZoombiesAbi.abi, provider);
 
-    async function getTotalSupply() {
+    async function getTotalSupplyz() {
         ztotalSupply = await contractzoom.totalSupply();
-        zbtotalSupply = await contractzoombies.totalSupply();
-        setZsup(formatEther(ztotalSupply));
+        setZsup(formatEther(ztotalSupply));     
+    }
+    getTotalSupplyz();
+
+    async function getTotalSupplyzb() {
+        zbtotalSupply = await contractzoombies.totalSupply();  
         setZbsup(zbtotalSupply.toString());
     }
-    getTotalSupply();
-
-    contractzoom.once("Transfer", (to, amount, from) => {
-        console.log(to, amount, from);
-    });
+    getTotalSupplyzb();
 
     return (
         <div>
             <div>Zoom Ethers Total Supply: {zsup}</div>
             <div>Zoombies Ethers Total Supply: {zbsup}</div>
+            <TransList contractzoom={contractzoom} contractzoombies={contractzoombies} zsupply={getTotalSupplyz} zbsupply={getTotalSupplyzb}></TransList>
         </div>
     )
 }

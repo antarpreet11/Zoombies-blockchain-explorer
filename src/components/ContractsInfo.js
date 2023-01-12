@@ -20,15 +20,15 @@ const ContractsInfo = (props) => {
         currzoombies = moonzoombies;
     }
 
-    // const zoomLogs = useLogs({
-    //     contract: currzoom,
-    //     event: 'Transfer',
-    //     args: [null],
-    // }, {
-    //     chainId: props.chID,
-    //     refresh: "everyBlock",
-    // });
-    // console.log(zoomLogs);
+    const zoomLogs = useLogs({
+        contract: currzoom,
+        event: 'Transfer',
+        args: [null],
+    }, {
+        chainId: props.chID,
+        refresh: "everyBlock",
+    });
+    console.log(zoomLogs);
 
     const zoom = useToken(currzoom);
     // const zoombies = useToken(currzoombies);
