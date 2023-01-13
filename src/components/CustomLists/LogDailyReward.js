@@ -7,7 +7,7 @@ const LogDailyReward = (props) => {
     props.contractzoombies.on("LogDailyReward", (owner, amountOfCreditsRemaining, event) => {
         const t1 = {
             owner: owner,
-            amount: amountOfCreditsRemaining,
+            amount: amountOfCreditsRemaining.toString(),
             data: event,
             key: event.transactionHash,
             id: event.transactionHash
