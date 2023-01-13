@@ -1,5 +1,4 @@
 import React from 'react'
-import { ethers } from 'ethers'
 import { formatEther } from '@ethersproject/units'
 import { useState } from 'react'
 

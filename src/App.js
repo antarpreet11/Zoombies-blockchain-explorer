@@ -9,7 +9,7 @@ function App() {
   const isConnected = account !== undefined;
   console.log("App called");
   return (
-      <div class="d-flex justify-content-center mt-5">
+      <div class="d-flex justify-content-center mt-5 ml-5 mr-5 mb-5">
         {isConnected ? 
           <div class="justify-content-center">
             <button onClick={deactivate} type="button" class="btn btn-success btn-lg mb-2">Connected!</button>

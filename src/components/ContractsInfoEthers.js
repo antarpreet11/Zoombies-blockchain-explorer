@@ -5,6 +5,7 @@ import ZoombiesAbi from '../abis/Zoombies.json'
 import { formatEther } from '@ethersproject/units'
 import { useState } from 'react';
 import TransList from './TransList.js'
+import CustomLists from './CustomLists.js'
 
 const ContractsInfoEthers = (props) => {
 
@@ -54,6 +55,7 @@ const ContractsInfoEthers = (props) => {
             <div>Zoom Ethers Total Supply: {zsup}</div>
             <div>Zoombies Ethers Total Supply: {zbsup}</div>
             <TransList contractzoom={contractzoom} contractzoombies={contractzoombies} zsupply={getTotalSupplyz} zbsupply={getTotalSupplyzb}></TransList>
+            <CustomLists contractzoombies={contractzoombies}></CustomLists>
         </div>
     )
 }
