@@ -7,7 +7,7 @@ const CustomLists = (props) => {
 
     return (
         <div>
-            <LogCardMinted contractzoombies={props.contractzoombies}>LogCardMinted</LogCardMinted>
+            <LogCardMinted contractzoombies={props.contractzoombies} acc={props.acc}>LogCardMinted</LogCardMinted>
             <LogDailyReward contractzoombies={props.contractzoombies}>LogDailyReward</LogDailyReward>
             <LogPackOpened contractzoombies={props.contractzoombies}>LogPackOpened</LogPackOpened>
         </div>

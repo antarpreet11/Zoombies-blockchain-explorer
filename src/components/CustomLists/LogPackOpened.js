@@ -21,10 +21,10 @@ const LogPackOpened = (props) => {
     return (
         <div>
             <div>Log Pack Opened:</div>
-            <ul class="list-group">
+            <ul className="list-group">
                 {
                     cardList.map((item) => 
-                    <li key={item.key} class="list-group-item border border-danger">Rarity: {item.rarity}</li>)
+                    <li key={item.key} className="list-group-item border border-danger">Rarity: {item.rarity}</li>)
                 }
             </ul>
         </div>

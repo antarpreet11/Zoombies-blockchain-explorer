@@ -21,10 +21,10 @@ const LogDailyReward = (props) => {
     return (
         <div>
             <div>Log Daily Reward:</div>
-            <ul class="list-group">
+            <ul className="list-group">
                 {
                     cardList.map((item) => 
-                    <li key={item.key} class="list-group-item border border-warning">Credits Remaining: {item.amount}</li>)
+                    <li key={item.key} className="list-group-item border border-warning">Credits Remaining: {item.amount}</li>)
                 }
             </ul>
         </div>

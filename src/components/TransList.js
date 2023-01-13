@@ -42,22 +42,22 @@ const TransList = (props) => {
     });
         
     return (
-        <div class="d-flex flex-row justify-content-between mt-3">
+        <div className="d-flex flex-row justify-content-between mt-3">
             <div>
                 <div>Zoom Transfers List: </div>
-                <ul class="list-group">
+                <ul className="list-group">
                 {
                     ztransactions.map((item) => 
-                    <li key={item.key} class="list-group-item border border-primary">{item.id}</li>)
+                    <li key={item.key} className="list-group-item border border-primary">{item.id}</li>)
                 }
                 </ul>
             </div>
             <div>
                 <div>Zoombies Transfers List: </div>
-                <ul class="list-group">
+                <ul className="list-group">
                 {
                     zbtransactions.map((item) => 
-                    <li key={item.key} class="list-group-item border border-primary">{item.tokenID}</li>)
+                    <li key={item.key} className="list-group-item border border-primary">{item.tokenID}</li>)
                 }
                 </ul>
             </div>
