@@ -14,8 +14,28 @@ const TopButtons = (props) => {
         props.signedcontract.mintBoosterNFT(0);
     }
 
-    const buynfthandler = () => {
+    const buynfthandler = async () => {
 
+        const totalCreditsToBuy = 1;
+
+        var totalBoostersCost = ethers.utils
+          .parseEther((0.01 * parseInt(totalCreditsToBuy)).toString())
+          .toString();
+
+        const gasEstimate = await props.signedcontract.estimateGas.buyBoosterCredits(
+          parseInt(totalCreditsToBuy),
+          {
+            value: totalBoostersCost.toString(),
+          }
+        );
+
+        const res = await props.signedcontract.buyBoosterCredits(
+          parseInt(totalCreditsToBuy),
+          {
+            value: totalBoostersCost.toString(),
+            gasLimit: calculateGasMargin(gasEstimate)
+          }
+        );
     }
 
     const buyandminthandler = async () => {

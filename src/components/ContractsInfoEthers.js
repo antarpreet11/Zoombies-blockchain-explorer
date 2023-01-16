@@ -26,12 +26,14 @@ const ContractsInfoEthers = (props) => {
     if(props.chID == '1285') {
         currzoom = movrzoom;
         currzoombies = movrzoombies;
-        provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonriver.moonbeam.network/');
+        // provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonriver.moonbeam.network/');
+        provider = new ethers.providers.Web3Provider(window.ethereum);
     }
     else if(props.chID == '1287') {
         currzoom = moonzoom;
         currzoombies = moonzoombies;
-        provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonbase.moonbeam.network/');
+        // provider = new ethers.providers.JsonRpcBatchProvider('https://rpc.api.moonbase.moonbeam.network/');
+        provider = new ethers.providers.Web3Provider(window.ethereum);
     }
     
     let ztotalSupply = undefined;

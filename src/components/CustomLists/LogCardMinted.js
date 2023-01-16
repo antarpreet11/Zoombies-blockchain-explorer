@@ -22,8 +22,9 @@ const LogCardMinted = (props) => {
         })
     })
     
-    const sacrificeHandler = () => {
-        
+    const sacrificeHandler = (e) => {
+        const tempId = e.nativeEvent.path[3].id;
+        props.contractzoombies.sacrificeNFTs([tempId.toString()]);
     }
     
     const inputHandler = (e) => {
@@ -32,8 +33,9 @@ const LogCardMinted = (props) => {
     
     const giftHandler = (e) => {
         const tempId = e.nativeEvent.path[4].id;
-        console.log(props.contractzoombies.safeTransferFrom(props.acc, inp, tempId.toString()));
-        e.preventDefault();
+        // console.log(props.acc, inp, tempId.toString());
+        props.contractzoombies.safeTransferFrom(props.acc, inp, tempId.toString());
+        // console.log(props.contractzoombies);
     }
 
     return (
@@ -50,10 +52,8 @@ const LogCardMinted = (props) => {
                                 <div className="d-flex flex-column">
                                     <button onClick={sacrificeHandler}>Sacrifice</button>
                                     <div>
-                                        <form onSubmit={giftHandler}>
-                                            <input type="text" onChange={inputHandler} style={{width: "65%"}}></input>
-                                            <button type="submit" style={{width: "35%"}}>Gift</button>
-                                        </form>
+                                        <input type="text" onChange={inputHandler} style={{width: "65%"}}></input>
+                                        <button onClick={giftHandler} style={{width: "35%"}}>Gift</button>
                                     </div>
                                 </div>
                                 :
