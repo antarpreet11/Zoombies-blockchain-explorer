@@ -33,11 +33,16 @@ const LogCardMinted = (props) => {
     
     const giftHandler = (e) => {
         const tempId = e.nativeEvent.path[4].id;
-        // console.log(props.acc, inp, tempId.toString());
-        props.contractzoombies.safeTransferFrom(props.acc, inp, tempId.toString());
+        // console.log(props.acc, inp, tempId);
         // console.log(props.contractzoombies);
+        // const to = '0x23dc227F2742F63425e5B088218a9f70e5ad49AE';
+        // const from = '0xFf369caa6296F24511800B78aEF73fA6Cd47A7F3';
+        // const token = 8481;
+        // props.contractzoombies.transferFrom(props.acc, inp, tempId.toString());
+        // console.log(props.contractzoombies.totalSupply());
+        props.contractzoombies['safeTransferFrom(address,address,uint256)'](props.acc, inp, tempId.toString());
     }
-
+    
     return (
         <div>
             <div>Log Card Minted:</div>

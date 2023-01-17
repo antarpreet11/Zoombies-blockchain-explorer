@@ -9,7 +9,6 @@ import reportWebVitals from './reportWebVitals';
 import { Mainnet, DAppProvider, Config, MoonbaseAlpha, Moonriver} from '@usedapp/core';
 import { getDefaultProvider } from 'ethers';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const config: Config = {
   readOnlyChainId: MoonbaseAlpha.chainId,

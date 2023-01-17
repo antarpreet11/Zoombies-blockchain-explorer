@@ -1,6 +1,5 @@
 import React from 'react'
-import { ethers } from 'ethers'
-import { useContractFunction } from '@usedapp/core'
+import { ethers } from 'ethers' 
 
 const TopButtons = (props) => {
     // const cont = props.zbcontract;
