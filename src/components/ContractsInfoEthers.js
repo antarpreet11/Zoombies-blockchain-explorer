@@ -62,10 +62,10 @@ const ContractsInfoEthers = (props) => {
 
     return (
         <div>
-            <TopButtons zbcontract={zbcontract} signedcontract={contractzoombies}></TopButtons>
+            <TopButtons zbcontract={zbcontract} signedcontract={contractzoombies} acc={props.acc}></TopButtons>
             <div>Zoom Ethers Total Supply: {zsup}</div>
             <div>Zoombies Ethers Total Supply: {zbsup}</div>
-            <TransList contractzoom={contractzoom} contractzoombies={contractzoombies} zsupply={getTotalSupplyz} zbsupply={getTotalSupplyzb}></TransList>
+            <TransList contractzoom={contractzoom} contractzoombies={contractzoombies} zsupply={getTotalSupplyz} zbsupply={getTotalSupplyzb} chID={props.chID}></TransList>
             <CustomLists contractzoombies={contractzoombies} acc={props.acc}></CustomLists>
         </div>
     )

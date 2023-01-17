@@ -1,9 +1,13 @@
 import React from 'react'
 import { ethers } from 'ethers' 
+import { formatEther } from '@ethersproject/units'
+import { useEtherBalance } from '@usedapp/core';
 
 const TopButtons = (props) => {
     // const cont = props.zbcontract;
     // const { state, send } = useContractFunction(cont, 'buyBoosterAndMintNFT');
+    const balance = useEtherBalance(props.acc);
+    const nbalance = balance ? formatEther(balance) : 0;
 
     function calculateGasMargin(value) {
         return value.mul(120).div(100)
@@ -50,14 +54,17 @@ const TopButtons = (props) => {
 
     }
 
+    // console.log(!(parseInt(props.signedcontract.boosterCreditsOwned(props.acc)) >= 1));
+    console.log(nbalance);
+
     return (
         <div className="d-flex justify-content-between mb-3">
             <div>
-                <button onClick={mintnfthandler}>Mint NFT</button>
+                <button onClick={mintnfthandler} disabled={!(parseInt(props.signedcontract.boosterCreditsOwned(props.acc)) >= 1)}>Mint NFT</button>
             </div>
             <div>
-                <button onClick={buynfthandler}>Buy NFT Credits</button>
-                <button onClick={buyandminthandler}>Buy and Mint NFT</button>
+                <button onClick={buynfthandler} disabled={(nbalance < 0.015)}>Buy NFT Credits</button>
+                <button onClick={buyandminthandler} disabled={(nbalance < 0.015)}>Buy and Mint NFT</button>
             </div>
         </div>
     )

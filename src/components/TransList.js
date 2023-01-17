@@ -48,7 +48,9 @@ const TransList = (props) => {
                 <ul className="list-group">
                 {
                     ztransactions.map((item) => 
-                    <li key={item.key} className="list-group-item border border-primary">{item.id}</li>)
+                    <li key={item.key} className="list-group-item border border-primary">
+                        <a href={props.chID == '1287' ? `https://moonbase.moonscan.io/tx/${item.id}` : `https://moonriver.moonscan.io/tx/${item.id}`} target='blank'>{item.id}</a>
+                    </li>)
                 }
                 </ul>
             </div>
