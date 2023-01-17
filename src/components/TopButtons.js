@@ -55,7 +55,6 @@ const TopButtons = (props) => {
     }
 
     // console.log(!(parseInt(props.signedcontract.boosterCreditsOwned(props.acc)) >= 1));
-    console.log(nbalance);
 
     return (
         <div className="d-flex justify-content-between mb-3">
